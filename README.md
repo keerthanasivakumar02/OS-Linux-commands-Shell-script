@@ -402,18 +402,36 @@ www. mrcet.... com
  ```
 cat urllist.txt | tr -d ' '
  ## OUTPUT
-
+```
+www.yahoo.com
+www.google.com
+www.mrcet....com
+```
 
  
 cat urllist.txt | tr -d ' ' | tr -s '.'
 ## OUTPUT
-
+```
+www.yahoo.com
+www.google.com
+www.mrcet.com
+```
 
 
 #Backup commands
 tar -cvf backup.tar *
 ## OUTPUT
-
+```
+bench.py
+file21
+file22
+file23
+hello.c
+hello.js
+newfile
+readme.txt
+urllist.txt
+```
 
 mkdir backupdir
  
@@ -421,18 +439,23 @@ mv backup.tar backupdir
  
 tar -tvf backup.tar
 ## OUTPUT
-
+```
+tar: can't open 'backup.tar': No such file or directory
+```
 
 tar -xvf backup.tar
 ## OUTPUT
-
+```
+tar: can't open 'backup.tar': No such file or directory
+```
 gzip backup.tar
 
 ls .gz
 ## OUTPUT
- 
+ ```
 gunzip backup.tar.gz
-## OUTPUT
+```
+
 
  
 # Shell Script
@@ -443,7 +466,12 @@ echo 'echo Hello World‘; exit 0 >> my-script.sh
 chmod 755 my-script.sh
 ./my-script.sh
 ## OUTPUT
-
+```
+hello in this world
+i cant stop
+for this non stop movement
+stop
+```
  
 cat << stop > herecheck.txt
 ```
@@ -455,7 +483,11 @@ stop
 
 cat herecheck.txt
 ## OUTPUT
-
+```
+hello in this world
+i cant stop
+for this non stop movement
+```
 
 cat < scriptest.sh 
 ```bash
@@ -493,24 +525,49 @@ chmod 777 scriptest.sh
 ./scriptest.sh 1 2 3
 
 ## OUTPUT
-
+```
+./scriptest.sh: line 1: #!/bin/sh: No such file or directory
+“File name is ./scriptest.sh ”
+File name is  scriptest.sh
+“First arg. is ” 1
+“Second arg. is ” 2
+“Third arg. is ” 3
+“Fourth arg. is ”
+The $@ is  1 2 3
+The $\# is  1#
+The $$ is  14337
+    PID TTY          TIME CMD
+  13614 pts/1    00:00:00 bash
+  14337 pts/1    00:00:00 bash
+  14340 pts/1    00:00:00 ps
+```
  
 ls file1
 ## OUTPUT
-
+```
+file1
+```
 echo $?
 ## OUTPUT 
+```
+0
+```
 ./one
 bash: ./one: Permission denied
  
 echo $?
 ## OUTPUT 
+```
+1
+```
  
 abcd
  
 echo $?
  ## OUTPUT
-
+```
+0
+```
 
  
 # mis-using string comparisons
@@ -542,14 +599,18 @@ echo "$val1 is less than $val2"
 fi
 ```
 ##OUTPUT
-
+```
+baseball is less than hockey
+```
 
 
 chmod 755 strcomp.sh
  
 ./strcomp.sh 
 ## OUTPUT
-
+```
+You are the owner of the /etc/passwd file
+```
 
 # check file ownership
 cat < psswdperm.sh 
@@ -622,7 +683,10 @@ fi
 
 ./ifnested.sh 
 ## OUTPUT
-
+```
+“The test value 10 is greater than 5”
+“The values are different”
+```
 
 
 # using numeric test comparisons
@@ -715,7 +779,11 @@ $ chmod 755 ifnested.sh
  
 $ ./ifnested.sh 
 ##OUTPUT
-
+```
+“/home/sec The object exists, is it a file?”
+“No,/home/sec it is not a file!”
+“But /home/sec/.bash_history is a file!”
+```
 # looking for a possible value using elif
 cat elifcheck.sh 
 ```bash
@@ -743,7 +811,10 @@ $ chmod 755 elifcheck.sh
  
 $ ./elifcheck.sh 
 ## OUTPUT
-
+```
+./elifcheck.sh: line 1: #!/bin/bash: No such file or directory
+Sorry, you are not allowed here
+```
 
 # testing compound comparisons
 cat> ifcompound.sh 
@@ -759,6 +830,15 @@ fi
 $ chmod 755 ifcompound.sh
 $ ./ifcompound.sh 
 ## OUTPUT
+```
+\#!/bin/bash
+if [ -d $HOME ] && [ -w $HOME ]
+then
+echo "The file exists and you can write to it"
+else
+echo "I cannot write to the file"
+fi
+```
 
 # using the case command
 cat >casecheck.sh 
@@ -891,7 +971,15 @@ Bhadrachalam
 Khammam
 
 ## OUTPUT
-
+```
+Visit beautiful cities
+Visit beautiful cities
+Visit beautiful cities
+Visit beautiful cities
+Visit beautiful cities
+Visit beautiful cities
+Visit beautiful cities
+```
 
 cat forctype.sh 
 ```bash
@@ -905,7 +993,13 @@ done
 $ chmod 755 forctype.sh
 $ ./forctype.sh 
 ## OUTPUT
-
+```
+The value is i is 1
+The value is i is 2
+The value is i is 3
+The value is i is 4
+The value is i is 5
+```
 cat forctype1.sh 
 ```bash
 #!/bin/bash
@@ -918,7 +1012,13 @@ done
 $ chmod 755 forctype.sh
 $ ./forctype1.sh 
 ## OUTPUT
-
+```
+1 - 5
+2 - 4
+3 - 3
+4 - 2
+5 - 1
+```
 cat fornested1.sh 
 ```bash
 #!/bin/bash
@@ -936,7 +1036,20 @@ $ chmod 755 fornested1.sh
  
 $ ./fornested1.sh 
  ## OUTPUT
-
+```
+Starting loop 1:
+Inside loop: 1
+Inside loop: 2
+Inside loop: 3
+Starting Loop 2:
+Inside loop: 1
+Inside loop: 2
+Inside loop: 3
+Starting Loop 3:
+Inside loop: 1
+Inside loop: 2
+Inside loop: 3
+```
  
 cat forbreak.sh 
 ```bash
@@ -953,6 +1066,11 @@ done
 echo "The for loop is completed“
 ```
 ## OUTPUT
+```
+Iteration number: 1
+Iteration number: 2
+The for loop is completed
+```
 
 $ chmod 755 forbreak.sh
  
@@ -978,7 +1096,13 @@ $ chmod 755 forcontinue.sh
  
 $ ./forcontinue.sh 
 ## OUTPUT
- 
+ ```
+#!/bin/bash
+# testing the read command
+echo -n "Enter your name: "
+read name
+echo "Hello $name, welcome to my program. "
+```
 cat exread.sh 
 ```bash
 #!/bin/bash
@@ -992,7 +1116,10 @@ $ chmod 755 exread.sh
  
 $ ./exread.sh 
 ## OUTPUT
-
+```
+Enter your name: Aaron
+Hello Aaron, welcome to my program.
+```
 
  cat exread1.sh
 ```bash
@@ -1004,8 +1131,10 @@ echo "Hello $name, welcome to my program. “
 $ chmod 755 exread1.sh 
 
 ## OUTPUT
-
-
+```
+Enter your name: Aaron
+Hello Aaron, welcome to my program.
+```
 
 $ ./exread1.sh 
  
@@ -1039,7 +1168,26 @@ cat argshift.sh
   shift 
 done
 ```
+```
+#!/bin/bash 
+ while (( "$#" )); do 
+  echo $1 
+  shift 
+done
+```
+```
+#!/bin/bash 
+ while (( "$#" )); do 
+  echo $1 
+  shift 
+done
+```
 $ chmod 777 argshift.sh
+```
+1
+2
+3
+```
 
 ## OUTPUT
 $ ./argshift.sh 1 2 3
@@ -1131,7 +1279,19 @@ else
 fi
 ```
 ## OUTPUT 
+```
+locathost:~# chmod 755 palindrome.sh
+locathost:~# ./palindrome.sh
+Enter the number
+21
+Number is NOT palindrome
 
+locathost:~# chmod 755 palindrome.sh
+locathost:~# ./palindrome.sh
+Enter the number
+33
+Number is palindrome
+```
 
 # RESULT:
 The Commands are executed successfully.
